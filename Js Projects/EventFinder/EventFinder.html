@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="script" href="EventFinder.js"> -->
+    <script src="EventFinder.js"></script>
+    <script src="jsonData.js"></script>
+</head>
+<body>
+
+<script>
+    
+    let body = document.querySelector('body');
+    body.setAttribute("id",'body');
+
+    // let nav = document.createElement('div');
+    // nav.setAttribute('id','nav');
+    // body.setAttribute('style','margin:0px;');
+    // body.appendChild(nav);
+
+    navBar();
+    
+    let mainDiv = document.createElement('div');
+    mainDiv.setAttribute('id','main');
+    body.setAttribute('style','margin:0px;background-color:#f2f2f2;');
+    body.appendChild(mainDiv);
+    // headerComponent();
+    // eventsDiv();    
+    slidesDiv();
+    
+    
+    eventsDiv();
+    // logIn();
+
+</script>
+
+</body>
+</html>
+
+
+
+

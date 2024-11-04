@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    
+</head>
+<body>
+
+<script>
+    const signupForm = document.createElement('form');
+    document.body.appendChild(signupForm);
+signupForm.style.cssText = `
+  background: #ffd6d6;
+  height: 90%;
+  width: 45%;
+  margin: 2%;
+`;
+
+const title = document.createElement('h2');
+title.textContent = 'Sign Up';
+title.style.cssText = `
+  padding: 5px;
+  margin: 2%;
+  margin-left: 25%;
+  width: 45%;
+`;
+
+signupForm.appendChild(title);
+
+function createInputField(placeholder, type = 'text', id, validationFunction) {
+  const input = document.createElement('input');
+  input.style.cssText = `
+    border: 2px solid black;
+    padding: 7px;
+    margin: 1%;
+    margin-left: 25%;
+    width: 45%;
+    border-radius: 0.75rem;
+  `;
+  input.placeholder = placeholder;
+  input.id = id;
+  input.addEventListener('keyup', validationFunction);
+  signupForm.appendChild(input);
+
+  const error = document.createElement('small');
+  error.style.cssText = `
+    color: red;
+    padding: 7px;
+    margin: 1%;
+    margin-left: 25%;
+    width: 45%;
+    border-radius: 0.75rem;
+  `;
+  signupForm.appendChild(error);
+
+  return { input, error };
+}
+
+const { input: usernameInput, error: usernameError } = createInputField('Username', 'text', 'username', validateUsername);
+const { input: emailInput, error: emailError } = createInputField('Email', 'email'); // No validation for email yet
+const { input: contactInput, error: contactError } = createInputField('Phone no.', 'text', 'contact', validateContact);
+const addressInput = createInputField('Address');
+const pinInput = createInputField('Pin Code');
+
+const submitBtn = document.createElement('input');
+submitBtn.type = 'submit';
+submitBtn.style.cssText = `
+  background: rgba(255, 2, 2, 0.3);
+  margin-left: 40%;
+  margin-top: 5%;
+  padding: 5px 14px;
+  border-radius: 0.41rem;
+`;
+
+signupForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (validateUsername() && validateContact()) {
+    // Handle successful form submission (e.g., send data to server)
+    console.log('Form submitted successfully');
+    return true;
+  }
+  return false;
+});
+
+signupForm.appendChild(usernameInput);
+signupForm.appendChild(usernameError);
+signupForm.appendChild(emailInput);
+signupForm.appendChild(emailError);
+signupForm.appendChild(contactInput);
+signupForm.appendChild(contactError);
+signupForm.appendChild(addressInput);
+signupForm.appendChild(pinInput);
+signupForm.appendChild(submitBtn);
+
+// Add the form to your desired location in the DOM (e.g., logIn.appendChild(signupForm);)
+
+function validateUsername() {
+  // Implement your username validation logic here
+  // Update the error message in usernameError if needed
+  return true; // Replace with actual validation logic
+}
+
+function validateContact() {
+  // Implement your contact number validation logic here
+  // Update the error message in contactError if needed
+  return true; // Replace with actual validation logic
+}
+
+// Implement validatePassword and validateCaptcha functions similarly</script>
+
+</body>
+</html>
